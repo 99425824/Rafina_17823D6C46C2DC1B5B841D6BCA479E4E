@@ -1,15 +1,39 @@
-# 1.1 Implement a recursive function to calculate the fractional of a given number.
+'''
+Implement a function called sort_students that takes a list of student objects as input and sort the
+list based on their CGPA (Cumulative Grade Point Average) in descending order. Each student object
+has the following attributes: name (string), roll_number (string), and cgpa (float). Test the function
+with different input lists of students.
+'''
+
+class Student:
+
+  def __init__(self, name, roll_number, cgpa):
+    self.name = name
+    self.roll_number = roll_number
+    self.cgpa = cgpa
 
 
-def fact(n):
-  if n == 0 or n == 1:
-    return 1
-  else:
-    return n * fact(n - 1)
+def sort_students(student_list):
+  # Sort the list of students in descending order of CGPA
+  sorted_students = sorted(student_list,
+                           key=lambda student: student.cgpa,
+                           reverse=True)
+  # Syntax - lambda arg:exp
+  return sorted_students
 
 
-number = int(input("Enter a value:"))
+# Example usage:
+students = [
+    Student("Shakira", "A123", 7.8),
+    Student("Saras", "A124", 8.9),
+    Student("Shalini", "A125", 9.1),
+    Student("Yamini", "A126", 9.9),
+]
 
-res = fact(number)
-print("The factorial of {} is {}.".format(number, res))
- 
+sorted_students = sort_students(students)
+
+# Print the sorted list of students
+for student in sorted_students:
+  print("Name: {}, Roll Number: {}, CGPA: {}".format(student.name,
+                                                                   student.roll_number,
+                                                  student.cgpa))
